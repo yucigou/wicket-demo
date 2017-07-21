@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+label {
+	background-color: #eee;
+	padding: 4px;
+}
+
+.feedbackPanelERROR {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<h1>User Login Form</h1>
+
+	<div wicket:id="feedback"></div>
+	<form wicket:id="loginForm">
+		<p>
+			<label>Username</label>:
+			<input wicket:id="username" type="text" size="20" />
+		</p>
+		<p>
+			<label>Password</label>:
+			<input wicket:id="password" type="password" size="20" />
+		</p>
+		<input type="submit" value="Register" />
+	</form>
+
+</body>
+</html>
