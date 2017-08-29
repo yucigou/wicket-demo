@@ -89,6 +89,13 @@
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.stagemonitor/stagemonitor-web-servlet -->
+		<dependency>
+		    <groupId>org.stagemonitor</groupId>
+		    <artifactId>stagemonitor-web-servlet</artifactId>
+		    <version>0.82.0</version>
+		</dependency>		
 	</dependencies>
 	<build>
 		<resources>
