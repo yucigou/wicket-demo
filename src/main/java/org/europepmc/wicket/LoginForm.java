@@ -18,7 +18,7 @@ public class LoginForm extends Form<LoginForm> {
     }
 
     public final void onSubmit() {
-        if (username.equals("test") && password.equals("test"))
+        if (username.equals("admin") && password.equals("password"))
             info("Congratulations!");
         else
             error("Wrong username or password!");
