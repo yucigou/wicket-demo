@@ -28,7 +28,7 @@ public class UserForm extends Form<UserFormData> {
     }
 
     public final void onSubmit() {
-        if (userFormData.getUsername().equals("test") && userFormData.getPassword().equals("test"))
+        if (userFormData.getUsername().equals("username") && userFormData.getPassword().equals("password"))
             info("Congratulations!");
         else
             error("Wrong username or password!");
