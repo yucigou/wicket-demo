@@ -5,6 +5,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import org.apache.wicket.request.IRequestParameters;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.resource.AbstractResource;
 
 /**
@@ -21,22 +24,25 @@ public class Fulltext extends AbstractResource {
 	@Override
 	protected ResourceResponse newResourceResponse(Attributes attributes) {
 		ResourceResponse resourceResponse = new ResourceResponse();
-	    resourceResponse.setContentType("text/xml");
-	    resourceResponse.setTextEncoding("utf-8");
+		resourceResponse.setContentType("text/xml");
+		resourceResponse.setTextEncoding("utf-8");
 
-	    resourceResponse.setWriteCallback(new WriteCallback()
-	    {
-	      @Override
-	      public void writeData(Attributes attributes) throws IOException
-	      {
-	        OutputStream outputStream = attributes.getResponse().getOutputStream();
-	        Writer writer = new OutputStreamWriter(outputStream);
-	        writer.append("<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>");
-	        writer.flush();
-	        writer.close();
-	      }      
-	    });
+		resourceResponse.setWriteCallback(new WriteCallback() {
+			@Override
+			public void writeData(Attributes attributes) throws IOException {
+				final Request request = RequestCycle.get().getRequest();
+				final IRequestParameters params = request.getRequestParameters();
 
-	    return resourceResponse;
+				String pmcid = params.getParameterValue("PMCID").toString();
+
+				OutputStream outputStream = attributes.getResponse().getOutputStream();
+				Writer writer = new OutputStreamWriter(outputStream);
+				writer.append("<!DOCTYPE html><html><head><title>PMCID: " + pmcid + "</title></head><body></body></html>");
+				writer.flush();
+				writer.close();
+			}
+		});
+
+		return resourceResponse;
 	}
 }

@@ -44,6 +44,7 @@ public class WicketApplication extends WebApplication
 				return rssResource;
 			}
 		};
+		// http://localhost:8080/wicket-demo/api/articlerender?PMCID=PMC3432
 		mountResource("/api/articlerender", resourceReference);
 	}
 }
