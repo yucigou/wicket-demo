@@ -2,7 +2,10 @@ package org.europepmc.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.IResource;
+import org.apache.wicket.request.resource.ResourceReference;
 import org.europepmc.wicket.form.UserFormPage;
+import org.europepmc.wicket.resources.Fulltext;
 
 /**
  * Application object for your web application.
@@ -31,5 +34,16 @@ public class WicketApplication extends WebApplication
 
 		mountPage("/home", HomePage.class);
 		mountPage("/user", UserFormPage.class);
+		
+		ResourceReference resourceReference = new ResourceReference("rssProducer") {
+			private static final long serialVersionUID = 1L;
+			Fulltext rssResource = new Fulltext();
+
+			@Override
+			public IResource getResource() {
+				return rssResource;
+			}
+		};
+		mountResource("/api/articlerender", resourceReference);
 	}
 }
