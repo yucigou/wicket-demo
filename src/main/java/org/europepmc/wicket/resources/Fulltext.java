@@ -26,7 +26,7 @@ public class Fulltext extends AbstractResource {
 	@Override
 	protected ResourceResponse newResourceResponse(Attributes attributes) {
 		ResourceResponse resourceResponse = new ResourceResponse();
-		resourceResponse.setContentType("text/xml");
+		resourceResponse.setContentType("text/html");
 		resourceResponse.setTextEncoding("utf-8");
 
 		resourceResponse.setWriteCallback(new WriteCallback() {

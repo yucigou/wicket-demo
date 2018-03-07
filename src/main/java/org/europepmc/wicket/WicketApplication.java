@@ -37,11 +37,11 @@ public class WicketApplication extends WebApplication
 		
 		ResourceReference resourceReference = new ResourceReference("rssProducer") {
 			private static final long serialVersionUID = 1L;
-			Fulltext rssResource = new Fulltext();
+			Fulltext fulltextResource = new Fulltext();
 
 			@Override
 			public IResource getResource() {
-				return rssResource;
+				return fulltextResource;
 			}
 		};
 		// http://localhost:8080/wicket-demo/api/articlerender?PMCID=PMC5804726
